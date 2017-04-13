@@ -1,0 +1,25 @@
+body {
+	font-family: 'Roboto Slab', serif;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+.textarea {
+	width: 100%;
+	border-radius: 2pt;
+	border-width: 1px;
+	border-color: #B7B7B7;
+}
+
+.my-table {
+	display: table;
+}
+
+.my-table-head,
+.my-table-row {
+	display: table-row;
+}
+
+.my-table-cell {
+	display: table-cell;
+}

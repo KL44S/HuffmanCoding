@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Generador de códigos compactos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="images/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/my-styles.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300" rel="stylesheet">
+	</head>
+
+	<body ng-controller="controller">
+		<div class="col-md-4 col-lg-3 col-sm-1 col-xs-0"></div>
+
+		<div class="col-md-4 col-lg-6 col-sm-10 col-xs-12">
+
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">ingrese el texto a codificar:</label>
+			<textarea class="textarea col-xs-12 col-sm-12 col-md-12 col-lg-12" rows="8" ng-model="text" ng-change="textHasChanged();"></textarea>
+
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">ingrese r (cantidad de símbolos del alfabeto código):</label>
+			<input type="number" min="2" max="99" class="textarea col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-model="code.r" />
+
+			<div class="my-table col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+				<div class="my-table-head">
+					<div class="my-table-cell">
+						<label>Símbolo</label>
+					</div>
+					<div class="my-table-cell">
+						<label>Probabilidad</label>
+					</div>
+					<div class="my-table-cell">
+						<label>Palabra código r={{code.r}}</label>
+					</div>
+				</div>
+
+				<div class="my-table-row" ng-repeat="symbol in source.symbols">
+
+					<div class="my-table-cell">
+						{{symbol.symbol}}
+					</div>
+
+					<div class="my-table-cell">
+						{{symbol.probability}}
+					</div>
+
+					<div class="my-table-cell">
+						{{symbol.codeWord}}
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-4 col-lg-3 col-sm-1 col-xs-0"></div>
+
+
+		<script src="js/angular.min.js"></script>
+		<script src="js/module.js"></script>
+		<script src="model/constantsModel.js"></script>
+		<script src="model/messagesModel.js"></script>
+		<script src="services/service.js"></script>
+		<script src="controllers/controller.js"></script>
+	</body>
+
+</html>
