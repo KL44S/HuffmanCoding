@@ -1,9 +1,9 @@
 (function() {
 var app = angular.module("myApp");
 
-	app.factory("compactCodeGeneratorService", function() {
+	app.factory("sourceService", ["constantsModel", function(constantsModel) {
 
-		var compactCodeGeneratorService = {};
+		var sourceService = {};
 
 		function incrementSymbolFrequency(symbols, symbol) {
 			var symbolFound = false;
@@ -18,7 +18,7 @@ var app = angular.module("myApp");
 				i++;
 			}
 
-			if (!symbolFound) symbols.push({ "symbol": symbol, "probability": 1 });
+			if (!symbolFound) symbols.push({ "symbol": symbol, "probability": 1, "codeWord": "" });
 		}
 
 		function getTotalSymbolsNumber(symbols) {
@@ -32,21 +32,23 @@ var app = angular.module("myApp");
 		}
 
 		function calculateProbability(symbols, totalSymbolsNumber) {
-			var decimals = 4;
+			var decimalNumber = 10;
 
 			symbols.forEach(function(element) {
 				var probability = element.probability / totalSymbolsNumber;
-				probability = Math.round(probability * Math.pow(10, decimals)) / Math.pow(10, decimals);
+				probability = Math.round(probability * Math.pow(decimalNumber, constantsModel.probabilityDecimals)) 
+								/ Math.pow(decimalNumber, constantsModel.probabilityDecimals);
 
 				element.probability = probability;
 			});			
 		}
 
-		compactCodeGeneratorService.getSource = function(text) {
-			var source = { "symbols": [] };
+		sourceService.generateSymbols = function(source) {
 
-			for (var i = 0; i < text.length; i++) {
-				incrementSymbolFrequency(source.symbols, text[i]);
+			source.symbols = [];
+
+			for (var i = 0; i < source.text.length; i++) {
+				incrementSymbolFrequency(source.symbols, source.text[i]);
 			}
 
 			var totalSymbolsNumber = getTotalSymbolsNumber(source.symbols);
@@ -56,8 +58,8 @@ var app = angular.module("myApp");
 			return source;
 		}
 
-		return compactCodeGeneratorService;
+		return sourceService;
 
-	});
+	}]);
 })();
 	

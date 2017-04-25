@@ -3,7 +3,9 @@
 
 	app.factory("constantsModel", function() {
 		var constantsModel = {
-				"defaultR": 2
+				"defaultR": 2,
+				"probabilityDecimals": 8,
+				"sourceMaxLength": 9999
 			};
 
 		return constantsModel;
