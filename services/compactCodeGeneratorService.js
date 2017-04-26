@@ -5,6 +5,19 @@ var app = angular.module("myApp");
 
 		var compactCodeGeneratorService = {};
 
+		function getFakeSymbols(symbolsNumber, r) {
+			if (symbolsNumber <= r) return 0;
+
+			var symbolsLeft = 0;
+
+			do {
+				symbolsLeft = symbolsNumber - r + 1;
+			}
+			while (symbolsLeft > r);
+
+			return (symbolsLeft - r);
+		}
+
 		function encodeSymbolsByHuffman(code) {
 			code.source.symbols.forEach(function(element) {
 				//TODO: eliminar esto!
