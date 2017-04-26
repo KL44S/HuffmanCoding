@@ -5,20 +5,34 @@ var app = angular.module("myApp");
 
 		var compactCodeGeneratorService = {};
 
-		function getFakeSymbols(symbolsNumber, r) {
+		function getFakeSymbolsNumber(symbolsNumber, r) {
 			if (symbolsNumber <= r) return 0;
 
-			var symbolsLeft = 0;
+			var symbolsLeft = symbolsNumber;
 
 			do {
-				symbolsLeft = symbolsNumber - r + 1;
+				symbolsLeft = symbolsLeft - r + 1;
 			}
 			while (symbolsLeft > r);
 
-			return (symbolsLeft - r);
+			return ((symbolsLeft - r) * -1);
+		}
+
+		function addFakeSymbols(symbols, code) {
+			var symbolsNumber = code.source.symbols.length;
+			var fakeSymbolsNumber = getFakeSymbolsNumber(symbolsNumber, code.r);
+
+			for (i = 0; i < fakeSymbolsNumber; i++) {
+				symbols.push({ "symbol": "", "probability": 0, "codeWord": "" });
+			}
 		}
 
 		function encodeSymbolsByHuffman(code) {
+			var symbols = code.source.symbols.slice();
+			addFakeSymbols(symbols, code);
+
+			//TODO: símbolos listos, solo queda el algoritmo
+			
 			code.source.symbols.forEach(function(element) {
 				//TODO: eliminar esto!
 				var codeWord = "000110";

@@ -1,8 +1,8 @@
 (function() {
 	var app = angular.module("myApp");
 
-	app.controller("controller", ["$scope", "constantsModel", "messagesModel", "sourceService", "entropyService", "compactCodeGeneratorService", 
-						function(model, constantsModel, messagesModel, sourceService, entropyService, compactCodeGeneratorService) {
+	app.controller("controller", ["$scope", "constantsModel", "messagesModel", "sourceService", "entropyService", "compactCodeGeneratorService", "symbolsGeneratorService", 
+						function(model, constantsModel, messagesModel, sourceService, entropyService, compactCodeGeneratorService, symbolsGeneratorService) {
 
 		model.textHasChanged = function() {
 			if (model.source.text != null && model.source.text != undefined) {
@@ -23,6 +23,11 @@
 			}
 		};
 
+		model.rHasChanged = function() {
+			model.code.codeAlphabet = symbolsGeneratorService.generateSymbols(model.code.r);
+			model.textHasChanged();
+		}
+
 		model.source = {
 			"text": "",
 			"entropy": 0,
@@ -32,10 +37,13 @@
 		model.code = {
 			"r": constantsModel.defaultR,
 			"source": model.source,
+			"codeAlphabet": symbolsGeneratorService.generateSymbols(constantsModel.defaultR),
 			"codedText": "",
 			"L": 0,
 			"performance": 0
 		};
+
+
 
 	}]);
 })();

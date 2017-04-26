@@ -14,28 +14,41 @@
 	<body ng-controller="controller">
 		<div class="col-md-4 col-lg-3 col-sm-1 col-xs-0"></div>
 
-		<div class="col-md-4 col-lg-6 col-sm-10 col-xs-12">
+		<div class="col-md-4 col-lg-6 col-sm-10 col-xs-12 main">
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">ingrese el texto a codificar:</label>
-			<textarea class="textarea col-xs-12 col-sm-12 col-md-12 col-lg-12" maxlength="{{constantsModel.sourceMaxLength}}" rows="8" ng-model="source.text" ng-change="textHasChanged();"></textarea>
+			<h1 class="title">CODIFICADOR HUFFMAN</h1>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">ingrese r (cantidad de símbolos del alfabeto código):</label>
-			<input type="number" min="2" max="99" class="textarea col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-model="code.r" />
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">TEXTO A CODIFICAR:</label>
+			<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textarea" maxlength="{{constantsModel.sourceMaxLength}}" rows="8" ng-model="source.text" ng-change="textHasChanged();"></textarea>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">entropía:</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">{{source.entropy}}</p>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
+
+			<label for="inputR" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">CANTIDAD DE SÍMBOLOS DEL CÓDIGO (r): </label>
+			<input id="inputR" type="number" min="2" max="99" class="col-xs-5 col-sm-3 col-md-3 col-lg-2 my-input" ng-model="code.r" ng-change="rHasChanged();"/>
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
+
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">ALFABETO CÓDIGO:</label>
+			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light"> { {{code.codeAlphabet.join(", ")}} }</p>
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
+
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">ENTROPÍA:</label>
+			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light">{{source.entropy}}</p>
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
 
 			<div class="my-table col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 				<div class="my-table-head">
-					<div class="my-table-cell">
-						<label>Símbolo</label>
+					<div class="my-table-cell head">
+						<label>SÍMBOLO</label>
 					</div>
-					<div class="my-table-cell">
-						<label>Probabilidad</label>
+					<div class="my-table-cell head no-lateral-border">
+						<label>PROBABILIDAD</label>
 					</div>
-					<div class="my-table-cell">
-						<label>Palabra código r={{code.r}}</label>
+					<div class="my-table-cell head">
+						<label>PALABRA CÓDIGO</label>
 					</div>
 				</div>
 
@@ -45,7 +58,7 @@
 						{{symbol.symbol}}
 					</div>
 
-					<div class="my-table-cell">
+					<div class="my-table-cell no-lateral-border">
 						{{symbol.probability}}
 					</div>
 
@@ -57,14 +70,20 @@
 
 			</div>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Texto codificado:</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">{{code.codedText}}</p>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">L (longitud media del código):</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">{{code.L}}</p>
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">TEXTO CODIFICADO:</label>
+			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light">{{code.codedText}}</p>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Rendimiento del código:</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12">{{code.preformance}}</p>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
+
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">LONGITUD MEDIA DEL CÓDIGO (L):</label>
+			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light">{{code.L}}</p>
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
+
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">RENDIMIENTO DEL CÓDIGO:</label>
+			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light">{{code.preformance}}</p>
 
 		</div>
 
@@ -77,6 +96,7 @@
 		<script src="model/messagesModel.js"></script>
 		<script src="services/sourceService.js"></script>
 		<script src="services/entropyService.js"></script>
+		<script src="services/symbolsGeneratorService.js"></script>	
 		<script src="services/compactCodeGeneratorService.js"></script>
 		<script src="controllers/controller.js"></script>
 	</body>

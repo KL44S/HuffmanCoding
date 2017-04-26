@@ -1,14 +1,32 @@
 body {
-	font-family: 'Roboto Slab', serif;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
+	font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-stretch: normal;
+    font-size: 130%;
+    line-height: normal;
+    font-family: Roboto, Arial, helvetica, clean, sans-serif;
+	font-weight: bold;
+	color: #FBF4F4;
+	background-color: #F0EAEA;
+	margin-top: 1%;
+}
+
+.my-input,
+.textarea {
+	color: #D24B4B;
+	border: none;
+	background-color: #FBF4F4;
+	
+}
+
+.my-input {
+	margin-left: 11pt;
 }
 
 .textarea {
-	width: 100%;
-	border-radius: 2pt;
-	border-width: 1px;
-	border-color: #B7B7B7;
+	resize: vertical;
 }
 
 .my-table {
@@ -20,6 +38,75 @@ body {
 	display: table-row;
 }
 
+.my-table-row {
+	font-weight: normal;
+}
+
 .my-table-cell {
 	display: table-cell;
+	border-style: solid;
+	border-width: 1px;
+	border-radius 0;
+	border-color: #FCA3A3;
+	border-top: none;
+	padding-left: 5pt;
+}
+
+.main {
+	border-radius: 0;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #BF4545;
+	background-color: #D24B4B;
+	padding-bottom: 1%;
+	box-shadow: 0px 0px 20px 0px #888888;
+}
+
+.head {
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-top-color: #FCA3A3;	
+}
+
+.separator {
+	margin: 2%;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-top-color: #FCA3A3;
+	right: 2%;
+	height: 0;
+}
+
+.inline {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.title {
+	font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-stretch: normal;
+    font-size: 275%;
+    line-height: normal;
+    font-family: Roboto, Arial, helvetica, clean, sans-serif;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 2%;
+}
+
+.font-light {
+	font-weight: normal;
+	font-size: 105%;
+	margin-bottom: 0;
+}
+
+.no-lateral-border {
+	border-right: none;
+	border-left: none;
 }

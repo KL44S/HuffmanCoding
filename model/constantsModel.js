@@ -5,7 +5,8 @@
 		var constantsModel = {
 				"defaultR": 2,
 				"probabilityDecimals": 8,
-				"sourceMaxLength": 9999
+				"sourceMaxLength": 9999,
+				"initialChar": '0'
 			};
 
 		return constantsModel;
