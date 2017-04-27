@@ -8,7 +8,7 @@
 		<link rel="icon" href="images/favicon.png" />
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/my-styles.css">
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,700" rel="stylesheet">
 	</head>
 
 	<body ng-controller="controller">
@@ -16,29 +16,25 @@
 
 		<div class="col-md-4 col-lg-6 col-sm-10 col-xs-12 main">
 
-			<h1 class="title">CODIFICADOR HUFFMAN</h1>
+			<div class="title">
+				<h1 class="secondary-title">CODIFICADOR</h1>
+				<h1 class="main-title"> HUFFMAN</h1>
+			</div>
 
 			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">TEXTO A CODIFICAR:</label>
 			<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textarea" maxlength="{{constantsModel.sourceMaxLength}}" rows="8" ng-model="source.text" ng-change="textHasChanged();"></textarea>
 
+			<!--**********************************************SEPARADOR************************************************-->
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
 
 			<label for="inputR" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">CANTIDAD DE SÍMBOLOS DEL CÓDIGO (r): </label>
-			<input id="inputR" type="number" min="2" max="99" class="col-xs-5 col-sm-3 col-md-3 col-lg-2 my-input" ng-model="code.r" ng-change="rHasChanged();"/>
+			<input id="inputR" type="number" class="col-xs-5 col-sm-3 col-md-3 col-lg-2 my-input" ng-model="code.r" ng-change="rHasChanged();"/>
+			<span class="error-message">  {{errorMessage}}</span>
 
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
+			<!--**********************************************SEPARADOR************************************************-->
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator" ng-class='{"invisible": code.codedText == ""}'></div>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">ALFABETO CÓDIGO:</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light"> { {{code.codeAlphabet.join(", ")}} }</p>
-
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
-
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">ENTROPÍA:</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light">{{source.entropy}}</p>
-
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
-
-			<div class="my-table col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="my-table col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-class='{"invisible": code.codedText == ""}'>
 
 				<div class="my-table-head">
 					<div class="my-table-cell head">
@@ -70,20 +66,39 @@
 
 			</div>
 
+			<!--**********************************************SEPARADOR************************************************-->
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">TEXTO CODIFICADO:</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light">{{code.codedText}}</p>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-div">
+				<label class="col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-class='{"invisible": code.codeAlphabet.length == 0}'>ALFABETO CÓDIGO:</label>
+				<label class="col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-class='{"invisible": code.codedText == ""}'>ENTROPÍA:</label>
+			</div>
 
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-div">			
+				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light" ng-class='{"invisible": code.codeAlphabet.length == 0}'> { {{code.codeAlphabet.join(", ")}} }</p>
+				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light" ng-class='{"invisible": code.codedText == ""}'>{{source.entropy}}</p>
+			</div>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">LONGITUD MEDIA DEL CÓDIGO (L):</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light">{{code.L}}</p>
+			<!--**********************************************SEPARADOR************************************************-->
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator" ng-class='{"invisible": code.codedText == ""}'></div>
 
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-div" ng-class='{"invisible": code.codedText == ""}'>
+				<label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">LONGITUD MEDIA DEL CÓDIGO (L):</label>
+				<label class="col-xs-6 col-sm-6 col-md-6 col-lg-6">RENDIMIENTO DEL CÓDIGO:</label>
+			</div>
 
-			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">RENDIMIENTO DEL CÓDIGO:</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light">{{code.preformance}}</p>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-div" ng-class='{"invisible": code.codedText == ""}'>
+				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light">{{code.L}}</p>
+				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light">{{code.preformance}}</p>
+			</div>
+
+			<!--**********************************************SEPARADOR************************************************-->
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator" ng-class='{"invisible": code.codedText == ""}'></div>
+
+			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-class='{"invisible": code.codedText == ""}'>TEXTO CODIFICADO:</label>
+			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light" ng-class='{"invisible": code.codedText == ""}'>{{code.codedText}}</p>
+
+
 
 		</div>
 

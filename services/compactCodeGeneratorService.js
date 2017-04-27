@@ -93,6 +93,28 @@ var app = angular.module("myApp");
 			encodeText(code);
 		};
 
+		compactCodeGeneratorService.getErrorMessages = function(code) {
+			var errorMessages = [];
+			
+			if (code.r == undefined || code.r == null) errorMessages.push(constantsModel.notEmptyFieldErrorMessage);
+			else {
+				if (code.r < constantsModel.minR) errorMessages.push(constantsModel.lessThanFieldErrorMessage + constantsModel.minR);
+				if (code.r > constantsModel.maxR) errorMessages.push(constantsModel.greaterThanFieldErrorMessage + constantsModel.maxR);
+			}
+
+			return errorMessages;
+		};
+
+		compactCodeGeneratorService.resetCode = function(code) {
+			code.codedText = "";
+
+			code.source.symbols.forEach(function(symbol) {
+				symbol.codeWord = "";
+			});
+
+			code.codeAlphabet = [];
+		}
+
 		return compactCodeGeneratorService;
 
 	}]);

@@ -4,12 +4,12 @@ body {
     font-variant-caps: normal;
     font-variant-numeric: normal;
     font-stretch: normal;
-    font-size: 130%;
+    font-size: 140%;
     line-height: normal;
-    font-family: Roboto, Arial, helvetica, clean, sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
 	font-weight: bold;
 	color: #FBF4F4;
-	background-color: #F0EAEA;
+	background-color: #E2DADA;
 	margin-top: 1%;
 }
 
@@ -18,7 +18,11 @@ body {
 	color: #D24B4B;
 	border: none;
 	background-color: #FBF4F4;
-	
+}
+
+.my-input:focus,
+.textarea:focus {
+	outline: 0px;
 }
 
 .my-input {
@@ -40,6 +44,7 @@ body {
 
 .my-table-row {
 	font-weight: normal;
+	font-size: 110%;
 }
 
 .my-table-cell {
@@ -59,7 +64,7 @@ body {
 	border-color: #BF4545;
 	background-color: #D24B4B;
 	padding-bottom: 1%;
-	box-shadow: 0px 0px 20px 0px #888888;
+	box-shadow: 0px 0px 20px 0px #343434;
 }
 
 .head {
@@ -81,32 +86,62 @@ body {
 	height: 0;
 }
 
-.inline {
+.table-div {
 	padding-left: 0;
-	padding-right: 0;
 }
 
-.title {
+.main-title,
+.secondary-title {
 	font-style: normal;
     font-variant-ligatures: normal;
     font-variant-caps: normal;
     font-variant-numeric: normal;
     font-stretch: normal;
-    font-size: 275%;
     line-height: normal;
-    font-family: Roboto, Arial, helvetica, clean, sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.secondary-title {
+	font-weight: normal;
+	margin-bottom: 0;
+	font-size: 200%;
+}
+
+.main-title {
 	font-weight: bold;
+	margin-top: 0;
+	font-size: 350%;
+}
+
+.title {
+	margin-bottom: 2%;	
 	text-align: center;
-	margin-bottom: 2%;
 }
 
 .font-light {
 	font-weight: normal;
-	font-size: 105%;
+	font-size: 110%;
 	margin-bottom: 0;
 }
 
 .no-lateral-border {
 	border-right: none;
 	border-left: none;
+}
+
+.right-border {
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #FCA3A3;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.invisible {
+	display: none;
+}
+
+.error-message {
+	margin-left: 5pt;
+	font-weight: normal;
 }
