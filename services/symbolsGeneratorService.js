@@ -6,14 +6,10 @@ var app = angular.module("myApp");
 		var symbolsGeneratorService = {};
 
 		symbolsGeneratorService.generateSymbols = function(r) {
-			var character = constantsModel.initialChar;
-			var ASCIIcode = character.charCodeAt();
 			var symbols = [];
 
-			for (i = 1; i <= r; i++) {
-				symbols.push(character);		
-				ASCIIcode ++;
-				character = String.fromCharCode(ASCIIcode);
+			for (i = 0; i < r; i++) {
+				symbols.push(constantsModel.codePosibleSymbols[i]);		
 			}
 
 			return symbols;

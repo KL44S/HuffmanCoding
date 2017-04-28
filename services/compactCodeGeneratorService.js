@@ -27,17 +27,79 @@ var app = angular.module("myApp");
 			}
 		}
 
+		function assignCodeSymbols(symbols, codeAlphabet) {
+			symbols.forEach(function(symbol, index) {
+				symbol.codeWord += codeAlphabet[index];
+			});
+		}
+
 		function encodeSymbolsByHuffman(code) {
-			var symbols = code.source.symbols.slice();
-			addFakeSymbols(symbols, code);
 
-			//TODO: símbolos listos, solo queda el algoritmo
-			
-			code.source.symbols.forEach(function(element) {
-				//TODO: eliminar esto!
-				var codeWord = "000110";
+			if (code.r >= code.source.symbols.length) {
+				assignCodeSymbols(code.source.symbols, code.codeAlphabet);
+			}
+			else {
+				var symbols = code.source.symbols.slice();
+				var promotedSymbols = [];
+				var iterations = [];
 
-				element.codeWord = codeWord;
+				addFakeSymbols(symbols, code);
+				iterations.push(symbols);
+
+				var symbolsLeft = symbols.length;
+
+				//Itero promoviendo simbolos
+				while (symbolsLeft > code.r) {
+					var currentSymbols = iterations[iterations.length - 1];
+					var newSymbols = [];
+					var probability = 0;
+
+					//Ordeno los simbolos
+					currentSymbols.sort(function(aSymbol, anotherSymbol) {
+						return (aSymbol.probability - anotherSymbol.probability);
+					});
+
+					//Lleno los nuevos simbolos
+					currentSymbols.forEach(function(symbol, index) {
+
+						if (index < code.r) probability += symbol.probability;
+
+						if (index == (code.r -1) ) {
+							newSymbols.push({ "symbol": symbol.symbol, "probability": probability, "codeWord": "" });
+							promotedSymbols.push(symbol.symbol);
+						}
+
+						else if (index >= code.r) newSymbols.push(symbol);
+					});
+
+					iterations.push(newSymbols);
+
+					symbolsLeft = newSymbols.length;
+				}
+
+				//Itero asignando palabras código
+				for (i = iterations.length - 1; i >= 0; i--) {
+					var currentSymbols;
+
+					if (i < (iterations.length - 1)) {
+						currentSymbols = iterations[i].slice(0, code.r);
+							
+						currentSymbols.forEach(function(symbol) {
+							var promotedSymbol = getSymbol(iterations[i + 1], promotedSymbols[i]);
+							symbol.codeWord = promotedSymbol.codeWord;
+						});
+					}
+					else currentSymbols = iterations[i];
+
+					assignCodeSymbols(currentSymbols, code.codeAlphabet);
+				}			
+			}
+
+		}
+
+		function getSymbol(symbols, symbol) {
+			symbols.forEach(function(currentSymbol) {
+				if (currentSymbol.symbol == symbol) return currentSymbol;
 			});
 		}
 
@@ -99,7 +161,7 @@ var app = angular.module("myApp");
 			if (code.r == undefined || code.r == null) errorMessages.push(constantsModel.notEmptyFieldErrorMessage);
 			else {
 				if (code.r < constantsModel.minR) errorMessages.push(constantsModel.lessThanFieldErrorMessage + constantsModel.minR);
-				if (code.r > constantsModel.maxR) errorMessages.push(constantsModel.greaterThanFieldErrorMessage + constantsModel.maxR);
+				if (code.r > constantsModel.codePosibleSymbols.length) errorMessages.push(constantsModel.greaterThanFieldErrorMessage + constantsModel.codePosibleSymbols.length);
 			}
 
 			return errorMessages;

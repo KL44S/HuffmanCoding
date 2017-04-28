@@ -145,3 +145,8 @@ body {
 	margin-left: 5pt;
 	font-weight: normal;
 }
+
+.error-input {
+	background-color: rgba(255, 255, 255, 0.6);
+	box-shadow: 0px 0px 5px 0px #D28E8E;
+}
