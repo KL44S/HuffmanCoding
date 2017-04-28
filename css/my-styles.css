@@ -13,6 +13,73 @@ body {
 	margin-top: 1%;
 }
 
+@media (min-width : 320px) {
+	body {
+		margin: 0;
+		background-color: #D24B4B;
+	}
+
+	.main {
+		box-shadow: none !important;
+		border: none !important;
+	}
+}
+
+@media (min-width : 480px) {
+	body {
+		margin: 0;
+		background-color: #D24B4B;
+	}
+
+	.main {
+		box-shadow: none !important;
+		border: none !important;
+	}
+}
+
+@media (min-width : 768px) {
+	body {
+		background-color: #E2DADA;
+		margin-top: 1%;
+	}
+
+	.main {
+		border-style: solid !important;
+		border-width: 1px !important;
+		border-color: #BF4545 !important;
+		box-shadow: 0px 0px 20px 0px #343434 !important;
+	}
+}
+
+@media (min-width : 992px) {
+	body {
+		background-color: #E2DADA;
+		margin-top: 1%;
+	}
+
+	.main {
+		border-style: solid !important;
+		border-width: 1px !important;
+		border-color: #BF4545 !important;
+		box-shadow: 0px 0px 20px 0px #343434 !important;
+	}
+}
+
+@media (min-width : 1200px) {
+	body {
+		background-color: #E2DADA;
+		margin-top: 1%;
+	}
+
+	.main {
+		border-style: solid !important;
+		border-width: 1px !important;
+		border-color: #BF4545 !important;
+		box-shadow: 0px 0px 20px 0px #343434 !important;
+	}
+}
+
+
 .my-input,
 .textarea {
 	color: #D24B4B;
