@@ -24,6 +24,10 @@ body {
 		border: none !important;
 		margin-bottom: 0 !important;
 	}
+
+	.logo {
+		display: none;
+	}
 }
 
 @media (min-width : 480px) {
@@ -36,6 +40,10 @@ body {
 		box-shadow: none !important;
 		border: none !important;
 		margin-bottom: 0 !important;
+	}
+
+	.logo {
+		display: inline-block;
 	}
 }
 
@@ -52,6 +60,10 @@ body {
 		box-shadow: 0px 0px 20px 0px #343434 !important;
 		margin-bottom: 1% !important;
 	}
+
+	.logo {
+		display: inline-block;
+	}
 }
 
 @media (min-width : 992px) {
@@ -67,6 +79,10 @@ body {
 		box-shadow: 0px 0px 20px 0px #343434 !important;
 		margin-bottom: 1% !important;
 	}
+
+	.logo {
+		display: inline-block;
+	}
 }
 
 @media (min-width : 1200px) {
@@ -81,6 +97,10 @@ body {
 		border-color: #BF4545 !important;
 		box-shadow: 0px 0px 20px 0px #343434 !important;
 		margin-bottom: 1% !important;
+	}
+
+	.logo {
+		display: inline-block;
 	}
 }
 
@@ -175,7 +195,7 @@ body {
 
 .secondary-title {
 	font-weight: normal;
-	margin-bottom: 0;
+	margin-bottom: -10pt;
 	font-size: 200%;
 }
 
@@ -186,8 +206,17 @@ body {
 }
 
 .title {
-	margin-bottom: 2%;	
-	text-align: center;
+	margin-bottom: 1%;	
+	text-align: left;
+	display: inline-block;
+}
+
+.logo {
+	margin-top: -38pt;
+	margin-left: 0;
+	margin-right: 5pt;
+	padding: 0;
+	vertical-align: middle;
 }
 
 .font-light {
