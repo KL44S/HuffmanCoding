@@ -10,6 +10,7 @@
 				"notEmptyFieldErrorMessage": "este campo no puede estar vacío",
 				"lessThanFieldErrorMessage": "este campo no puede ser menor a ",
 				"greaterThanFieldErrorMessage": "este campo no puede ser mayor a ",
+				"separator": "-",
 				"codePosibleSymbols": [
 								String.fromCharCode(48), String.fromCharCode(49), String.fromCharCode(50), String.fromCharCode(51), String.fromCharCode(52), String.fromCharCode(53), String.fromCharCode(54), 
 								String.fromCharCode(55), String.fromCharCode(56), String.fromCharCode(57), String.fromCharCode(65), String.fromCharCode(66), String.fromCharCode(67), String.fromCharCode(68), 

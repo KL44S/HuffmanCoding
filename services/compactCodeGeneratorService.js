@@ -118,7 +118,7 @@ var app = angular.module("myApp");
 			for (i = 0; i < text.length; i++) {
 				var codedSymbol = getSymbol(code.source.symbols, text.charAt(i));
 
-				if (i != 0) code.codedText += " ";
+				if (i != 0) code.codedText += constantsModel.separator;
 				code.codedText += codedSymbol.codeWord;
 			}
 		}

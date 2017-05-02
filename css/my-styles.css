@@ -13,7 +13,7 @@ body {
 	margin-top: 1%;
 }
 
-@media (min-width : 320px) {
+@media (min-width : 200px) {
 	body {
 		margin: 0;
 		background-color: #D24B4B;
@@ -27,6 +27,23 @@ body {
 
 	.logo {
 		display: none;
+	}
+}
+
+@media (min-width : 320px) {
+	body {
+		margin: 0;
+		background-color: #D24B4B;
+	}
+
+	.main {
+		box-shadow: none !important;
+		border: none !important;
+		margin-bottom: 0 !important;
+	}
+
+	.logo {
+		display: inline-block;
 	}
 }
 
@@ -212,7 +229,7 @@ body {
 }
 
 .logo {
-	margin-top: -38pt;
+	margin-top: -40pt;
 	margin-left: 0;
 	margin-right: 5pt;
 	padding: 0;
