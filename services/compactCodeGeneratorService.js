@@ -33,7 +33,15 @@ var app = angular.module("myApp");
 			});
 		}
 
+		function cleanCodeWords(symbols) {
+			symbols.forEach(function(symbol) {
+				symbol.codeWord = "";
+			})
+		}
+
 		function encodeSymbolsByHuffman(code) {
+
+			cleanCodeWords(code.source.symbols);
 
 			if (code.r >= code.source.symbols.length) {
 				assignCodeSymbols(code.source.symbols, code.codeAlphabet);

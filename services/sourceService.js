@@ -18,7 +18,14 @@ var app = angular.module("myApp");
 				i++;
 			}
 
-			if (!symbolFound) symbols.push({ "symbol": symbol, "probability": 1, "codeWord": "" });
+			if (!symbolFound) {
+				var newSymbol = new SymbolModel();
+				newSymbol.symbol = symbol;
+				newSymbol.probability = 1;
+				newSymbol.codeWord = "";
+
+				symbols.push(newSymbol);
+			}
 		}
 
 		function getTotalSymbolsNumber(symbols) {
