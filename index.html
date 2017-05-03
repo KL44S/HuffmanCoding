@@ -14,7 +14,7 @@
 	<body ng-controller="controller">
 		<div class="col-md-4 col-lg-3 col-sm-1 col-xs-0"></div>
 
-		<div class="col-md-4 col-lg-6 col-sm-10 col-xs-12 main" ng-cloak>
+		<div class="col-md-4 col-lg-6 col-sm-10 col-xs-12 main">
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -29,14 +29,14 @@
 
 
 			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12">TEXTO A CODIFICAR:</label>
-			<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textarea" maxlength="{{constantsModel.sourceMaxLength}}" rows="6" ng-model="source.text" ng-change="textHasChanged();"></textarea>
+			<textarea class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textarea" maxlength="{{constantsModel.sourceMaxLength}}" rows="6" ng-model="source.text" ng-change="textHasChanged();" ng-cloak></textarea>
 
 			<!--**********************************************SEPARADOR************************************************-->
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator"></div>
 
 			<label for="inputR" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">CANTIDAD DE SÍMBOLOS DEL CÓDIGO (r): </label>
 			<input id="inputR" type="number" class="col-xs-5 col-sm-3 col-md-3 col-lg-2 my-input" ng-class='{"error-input": errorMessage != ""}' ng-model="code.r" ng-change="rHasChanged();"/>
-			<span class="error-message">  {{errorMessage}}</span>
+			<span class="error-message" ng-cloak>  {{errorMessage}}</span>
 
 			<!--**********************************************SEPARADOR************************************************-->
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator" ng-class='{"invisible": code.codedText == ""}'></div>
@@ -57,15 +57,15 @@
 
 				<div class="my-table-row" ng-repeat="symbol in source.symbols">
 
-					<div class="my-table-cell">
+					<div class="my-table-cell" ng-cloak>
 						{{symbol.symbol}}
 					</div>
 
-					<div class="my-table-cell no-lateral-border">
+					<div class="my-table-cell no-lateral-border" ng-cloak>
 						{{symbol.probability}}
 					</div>
 
-					<div class="my-table-cell">
+					<div class="my-table-cell" ng-cloak>
 						{{symbol.codeWord}}
 					</div>
 
@@ -82,8 +82,8 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-div">			
-				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light" ng-class='{"invisible": code.codeAlphabet.length == 0}'> { {{code.codeAlphabet.join(", ")}} }</p>
-				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light" ng-class='{"invisible": code.codedText == ""}'>{{source.entropy}}</p>
+				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light" ng-class='{"invisible": code.codeAlphabet.length == 0}' ng-cloak> { {{code.codeAlphabet.join(", ")}} }</p>
+				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light" ng-class='{"invisible": code.codedText == ""}' ng-cloak>{{source.entropy}}</p>
 			</div>
 
 			<!--**********************************************SEPARADOR************************************************-->
@@ -95,15 +95,15 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-div" ng-class='{"invisible": code.codedText == ""}'>
-				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light">{{code.L}}</p>
-				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light">{{code.preformance}}</p>
+				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light" ng-cloak>{{code.L}}</p>
+				<p class="col-xs-6 col-sm-6 col-md-6 col-lg-6 font-light" ng-cloak>{{code.preformance}}</p>
 			</div>
 
 			<!--**********************************************SEPARADOR************************************************-->
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 separator" ng-class='{"invisible": code.codedText == ""}'></div>
 
 			<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-class='{"invisible": code.codedText == ""}'>TEXTO CODIFICADO:</label>
-			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light" ng-class='{"invisible": code.codedText == ""}'>{{code.codedText}}</p>
+			<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 font-light" ng-class='{"invisible": code.codedText == ""}' ng-cloak>{{code.codedText}}</p>
 
 
 
