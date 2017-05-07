@@ -136,6 +136,9 @@ var app = angular.module("myApp");
 		function calculatePerformance(code) {
 			var preformance = (code.source.entropy / code.L);
 
+			if (preformance > constantsModel.maxPerformanceAllowed)
+				preformance = constantsModel.maxPerformanceAllowed;
+
 			code.preformance = preformance;
 		}
 
