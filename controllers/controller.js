@@ -15,11 +15,12 @@
 
 		model.textHasChanged = function() {
 			try {
+				sourceService.generateSymbols(model.source);
+
 				model.errorMessage = "";
 				var errorMessages = compactCodeGeneratorService.getErrorMessages(model.code);
 
 				if (errorMessages.length == 0) {
-					sourceService.generateSymbols(model.source);
 					model.source.entropy = entropyService.getEntropy(model.source.symbols, model.code.r);
 					compactCodeGeneratorService.encode(model.code);	
 				}	
