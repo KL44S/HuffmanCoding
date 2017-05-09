@@ -169,11 +169,30 @@ var app = angular.module("myApp");
 		compactCodeGeneratorService.getErrorMessages = function(code) {
 			var errorMessages = [];
 			
-			if (code.r == undefined || code.r == null) errorMessages.push(constantsModel.notEmptyFieldErrorMessage);
+			if (isNaN(code.r) )
+				errorMessages.push(constantsModel.NaNerrorMessage);
+
 			else {
-				if (code.r < constantsModel.minR) errorMessages.push(constantsModel.lessThanFieldErrorMessage + constantsModel.minR);
-				if (code.r > constantsModel.codePosibleSymbols.length) errorMessages.push(constantsModel.greaterThanFieldErrorMessage + constantsModel.codePosibleSymbols.length);
+				if (code.r == undefined || code.r == null)
+					errorMessages.push(constantsModel.notEmptyFieldErrorMessage);
+
+				else {
+					if (code.r < constantsModel.minR)
+						errorMessages.push(constantsModel.lessThanFieldErrorMessage + constantsModel.minR);
+						
+					else {
+						if (code.r > constantsModel.codePosibleSymbols.length)
+							errorMessages.push(constantsModel.greaterThanFieldErrorMessage + constantsModel.codePosibleSymbols.length);
+
+						else {
+							//Número entero
+							if ( (code.r % 1) != 0)
+								errorMessages.push(constantsModel.notIntNumberErrorMessage);
+						}
+					}	
+				}			
 			}
+
 
 			return errorMessages;
 		};

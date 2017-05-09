@@ -10,6 +10,8 @@
 				"notEmptyFieldErrorMessage": "este campo no puede estar vacío",
 				"lessThanFieldErrorMessage": "este campo no puede ser menor a ",
 				"greaterThanFieldErrorMessage": "este campo no puede ser mayor a ",
+				"NaNerrorMessage": "este campo debe ser numérico",
+				"notIntNumberErrorMessage": "este campo debe ser un número entero",
 				"separator": "-",
 				"maxPerformanceAllowed": 1,
 				"codePosibleSymbols": [
